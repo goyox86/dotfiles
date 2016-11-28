@@ -1,0 +1,244 @@
+#
+# Sets Prezto options.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+#
+# General
+#
+
+# Set case-sensitivity for completion, history lookup, etc.
+# zstyle ':prezto:*:*' case-sensitive 'yes'
+
+# Color output (auto set to 'no' on dumb terminals).
+zstyle ':prezto:*:*' color 'yes'
+
+# Set the Zsh modules to load (man zshmodules).
+# zstyle ':prezto:load' zmodule 'attr' 'stat'
+
+# Set the Zsh functions to load (man zshcontrib).
+# zstyle ':prezto:load' zfunction 'zargs' 'zmv'
+
+# Set the Prezto modules to load (browse modules).
+# The order matters.
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'fasd' \
+  'prompt' \
+  'git' \
+  'ruby' \
+  'rails' \
+  'syntax-highlighting'
+
+#
+# Autosuggestions
+#
+
+# Set the query found color.
+# zstyle ':prezto:module:autosuggestions:color' found ''
+
+#
+# Editor
+#
+
+# Set the key mapping style to 'emacs' or 'vi'.
+zstyle ':prezto:module:editor' key-bindings 'emacs'
+
+# Auto convert .... to ../..
+zstyle ':prezto:module:editor' dot-expansion 'yes'
+
+#
+# Git
+#
+
+# Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
+zstyle ':prezto:module:git:status:ignore' submodules 'all'
+
+#
+# GNU Utility
+#
+
+# Set the command prefix on non-GNU systems.
+# zstyle ':prezto:module:gnu-utility' prefix 'g'
+
+#
+# History Substring Search
+#
+
+# Set the query found color.
+zstyle ':prezto:module:history-substring-search:color' found ''
+
+# Set the query not found color.
+zstyle ':prezto:module:history-substring-search:color' not-found ''
+
+# Set the search globbing flags.
+# zstyle ':prezto:module:history-substring-search' globbing-flags ''
+
+#
+# Pacman
+#
+
+# Set the Pacman frontend.
+# zstyle ':prezto:module:pacman' frontend 'yaourt'
+
+#
+# Prompt
+#
+
+# Set the prompt theme to load.
+# Setting it to 'random' loads a random theme.
+# Auto set to 'off' on dumb terminals.
+zstyle ':prezto:module:prompt' theme 'pure'
+
+#
+# Ruby
+#
+
+# Auto switch the Ruby version on directory change.
+zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
+
+#
+# Screen
+#
+
+# Auto start a session when Zsh is launched in a local terminal.
+# zstyle ':prezto:module:screen:auto-start' local 'yes'
+
+# Auto start a session when Zsh is launched in a SSH connection.
+# zstyle ':prezto:module:screen:auto-start' remote 'yes'
+
+#
+# SSH
+#
+
+# Set the SSH identities to load into the agent.
+# zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_rsa2' 'id_github'
+
+#
+# Syntax Highlighting
+#
+
+# Syntax Highlighting
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
+
+# Set syntax highlighters.
+# By default, only the main highlighter is enabled.
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+   'main' \
+   'brackets' \
+   'pattern' \
+   'cursor' \
+   'root'
+#
+# Set syntax highlighting styles.
+# zstyle ':prezto:module:syntax-highlighting' styles \
+#   'builtin' 'bg=blue' \
+#   'command' 'bg=blue' \
+#   'function' 'bg=blue'
+
+#
+# Terminal
+#
+
+# Auto set the tab and window titles.
+# zstyle ':prezto:module:terminal' auto-title 'yes'
+
+# Set the window title format.
+# zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+
+# Set the tab title format.
+# zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
+
+#
+# Tmux
+#
+
+# Auto start a session when Zsh is launched in a local terminal.
+# zstyle ':prezto:module:tmux:auto-start' local 'yes'
+
+# Auto start a session when Zsh is launched in a SSH connection.
+# zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+
+# Integrate with iTerm2.
+# zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+
+# chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+
+# Zendesk SSH
+
+export SSH_USER=jnarvaez
+
+source $HOME/.cargo/env
+
+# Vim
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
+# Rust racer
+export RUST_SRC_PATH=/Users/goyox86/Code/rust/rust/src
+
+# Java 8
+export PATH=$PATH:/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin
+
+# LLDB
+#export LLDB=rust-lldb
+
+# Go
+export GOPATH=$HOME/Code/go
+export PATH=$PATH:/$GOPATH/bin
+
+# My binaries
+export PATH=$PATH:~/bin
+
+export PATH=$PATH:~/armv8-rpi3-linux-gnueabihf/bin
+
+# Node Version Manager (nvm)
+#autoload -U add-zsh-hook
+#load-nvmrc() {
+#  if [[ -f .nvmrc && -r .nvmrc ]]; then
+#    nvm use
+#  elif [[ $(nvm version) != $(nvm version default)  ]]; then
+#    echo "Reverting to nvm default version"
+#    nvm use default
+#  fi
+#}
+#add-zsh-hook chpwd load-nvmrc
+#load-nvmrc
+#
+# BEGIN DOCKER-IMAGES
+export DOCKER_FOR_MAC_ENABLED=true
+source /Users/goyox86/Code/zendesk/docker-images/dockmaster/zdi.sh
+# END DOCKER-IMAGES
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+  . "$(brew --prefix nvm)/nvm.sh"
+
+# --files: List files that would be searched but do not search
+# --no-ignore: Do not respect .gitignore, etc...
+# --hidden: Search hidden files and folders
+# --follow: Follow symlinks
+# --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+# Swift
+export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
+
+# cowsay
+fortune | cowsay
+
+# Python LLDB stuff for LLDB neovim
+
+# ZDI pravda
+# export ZENDESK_DOORMAN_ENABLED=1

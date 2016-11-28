@@ -1,0 +1,20 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.dotfiles: ''
+    ~/.atom/config.cson: atom.cson
+    ~/.config/nvim/init.vim: init.vim
+    ~/.bashrc: bashrc
+    ~/.ctags: ctags
+    ~/.fzf.bash: fzf.bash
+    ~/.fzf.zsh: fzf.zsh
+    ~/.gitconfig: gitconfig
+    ~/.zpreztorc: zprestorc
+    ~/.zshrc: zshrc
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
