@@ -90,11 +90,6 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Aliases
 source ~/.aliases
 
-# BEGIN DOCKER-IMAGES
-export DOCKER_FOR_MAC_ENABLED=true
-source /Users/goyox86/Code/zendesk/docker-images/dockmaster/zdi.sh
-# END DOCKER-IMAGES
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
