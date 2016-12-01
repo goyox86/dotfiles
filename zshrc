@@ -101,3 +101,6 @@ source /Users/goyox86/Code/zendesk/docker-images/dockmaster/zdi.sh
 export NVM_DIR="/Users/goyox86/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+# rustup.rs
+source $HOME/.cargo/env
