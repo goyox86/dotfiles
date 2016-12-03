@@ -102,3 +102,7 @@ source $HOME/.cargo/env
 
 # golang
 export GOPATH=~/Code/go
+
+# chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
