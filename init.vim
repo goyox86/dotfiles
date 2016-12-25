@@ -79,7 +79,7 @@ let g:netrw_liststyle=3
 " Racer Rust
 "set hidden
 let g:racer_cmd = "/home/goyox86/.cargo/bin/racer"
-"let $RUST_SRC_PATH="/Users/goyox86/Code/rust/rust/src/"
+let g:racer_experimental_completer = 1
 
 " TagBar Rust
 let g:tagbar_type_rust = {
