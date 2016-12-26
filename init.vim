@@ -58,7 +58,7 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'keith/swift.vim'
 Plug 'mitsuse/autocomplete-swift'
 Plug 'Chiel92/vim-autoformat'
-
+Plug 'toml-lang/toml'
 "Add plugins to &runtimepath
 call plug#end()
 
@@ -115,7 +115,7 @@ let g:tagbar_type_elixir = {
 \ }
 
 " TagBar Auto
-:autocmd BufRead * TagbarOpen
+":autocmd BufRead * TagbarOpen
 
 " enable mouse support
 set mouse=a
