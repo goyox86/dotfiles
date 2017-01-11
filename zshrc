@@ -109,3 +109,11 @@ source /usr/local/share/chruby/auto.sh
 
 # rust racer
 export RUST_SRC_PATH=/home/goyox86/Code/rust/rust/src
+
+# Haskell
+export PATH=$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH
+export PATH=~/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH
+
+# GTK+ 3 HiDPI
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
