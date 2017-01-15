@@ -120,3 +120,7 @@ export GDK_DPI_SCALE=0.5
 
 # Swift
 export PATH=~/Code/swift/toolchain/usr/bin:"${PATH}"
+
+# Ubuntu/Debian Developer vars
+export DEBFULLNAME="Jose Narvaez"
+export DEBEMAIL="goyox86@@gmail.com"
