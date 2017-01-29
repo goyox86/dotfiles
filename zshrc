@@ -102,6 +102,7 @@ source $HOME/.cargo/env
 
 # golang
 export GOPATH=~/Code/go
+export PATH=$PATH:$GOPATH/bin
 
 # chruby
 source /usr/local/share/chruby/chruby.sh
@@ -124,3 +125,11 @@ export PATH=~/Code/swift/toolchain/usr/bin:"${PATH}"
 # Ubuntu/Debian Developer vars
 export DEBFULLNAME="Jose Narvaez"
 export DEBEMAIL="goyox86@@gmail.com"
+
+# Terminix VTE
+if [ $TERMINIX_ID ] || [ $VTE_VERSION ]; then
+  source /etc/profile.d/vte.sh
+fi
+
+# Guaka
+export PATH=$PATH:/home/goyox86/.Guaka-Generator/bin

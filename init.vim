@@ -59,6 +59,8 @@ Plug 'keith/swift.vim'
 Plug 'mitsuse/autocomplete-swift'
 Plug 'Chiel92/vim-autoformat'
 Plug 'toml-lang/toml'
+Plug 'tjdevries/nvim-langserver-shim'
+
 "Add plugins to &runtimepath
 call plug#end()
 
