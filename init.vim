@@ -194,7 +194,7 @@ vnoremap <F9> :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
 set tags=./tags;,tags;a
 
 " AutoPairs
-let g:AutoPairsFlyMode = 1
+"let g:AutoPairsFlyMode = 1
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
