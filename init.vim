@@ -60,6 +60,13 @@ Plug 'mitsuse/autocomplete-swift'
 Plug 'Chiel92/vim-autoformat'
 Plug 'toml-lang/toml'
 Plug 'tjdevries/nvim-langserver-shim'
+Plug 'KabbAmine/zeavim.vim', {'on': [
+            \   'Zeavim', 'Docset',
+            \   '<Plug>Zeavim',
+            \   '<Plug>ZVVisSelection',
+            \   '<Plug>ZVKeyDocset',
+            \   '<Plug>ZVMotion'
+            \ ]}
 
 "Add plugins to &runtimepath
 call plug#end()
