@@ -108,9 +108,6 @@ export PATH=$PATH:$GOPATH/bin
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
-# rust racer
-export RUST_SRC_PATH=/home/goyox86/Code/rust/rust/src
-
 # Haskellus
 export PATH=$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH
 export PATH=~/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH
@@ -120,7 +117,7 @@ export GDK_SCALE=2
 export GDK_DPI_SCALE=0.5
 
 # Swift
-export PATH=~/Code/swift/toolchain/usr/bin:"${PATH}"
+#export PATH=~/Code/swift/toolchain/usr/bin:"${PATH}"
 
 # Ubuntu/Debian Developer vars
 export DEBFULLNAME="Jose Narvaez"
@@ -136,3 +133,9 @@ export PATH=$PATH:/home/goyox86/.Guaka-Generator/bin
 
 # man syntax highlighting
 export PAGER=most
+
+# rls
+export DYLD_LIBRARY_PATH=${HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib
+export RLS_ROOT=${HOME}/Code/rust/rls
+# rust racer
+export RUST_SRC_PATH=${HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/line/rustlib/src/rust/src
