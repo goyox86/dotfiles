@@ -139,3 +139,10 @@ export DYLD_LIBRARY_PATH=${HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux
 export RLS_ROOT=${HOME}/Code/rust/rls
 # rust racer
 export RUST_SRC_PATH=${HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/line/rustlib/src/rust/src
+
+export PATH=~/bin:$PATH
+
+# RISC-V toolchain
+export PATH=~/.riscv/bin:$PATH
+
+neofetch
