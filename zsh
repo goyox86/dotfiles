@@ -1,1 +1,0 @@
-/home/goyox86/.zsh
