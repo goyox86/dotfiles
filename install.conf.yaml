@@ -15,6 +15,7 @@
     ~/.gitconfig: gitconfig
     ~/.zpreztorc: zprestorc
     ~/.aliases: aliases
+    ~/.zsh: .zsh
     ~/.zshrc: zshrc
 
 - shell:
