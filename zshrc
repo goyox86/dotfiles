@@ -77,9 +77,9 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # Custom Bash completions
-autoload bashcompinit
-bashcompinit
-source ~/.bash_completion.d/diesel_completions
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz bashcompinit && bashcompinit -l
+source ~/.zsh/completion/_diesel
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
