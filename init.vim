@@ -67,6 +67,11 @@ Plug 'KabbAmine/zeavim.vim', {'on': [
             \   '<Plug>ZVKeyDocset',
             \   '<Plug>ZVMotion'
             \ ]}
+Plug 'ronny/birds-of-paradise.vim'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 "Add plugins to &runtimepath
 call plug#end()
@@ -76,11 +81,11 @@ filetype plugin on
 
 " Syntax
 syntax on
-colorscheme onedark
+colorscheme birds-of-paradise
 let g:onedark_termcolors=24
 
 " Configuring airline
-let g:airline_theme='onedark'
+let g:airline_theme='tomorrow'
 
 " Side Pane
 let g:netrw_liststyle=3
@@ -263,3 +268,19 @@ set grepprg=rg\ --vimgrep
 
 " Removing highlighting from searches
 :map <esc> <esc> :noh<cr>
+
+" Language client neovim
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['pyls'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>

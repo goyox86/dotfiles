@@ -39,7 +39,7 @@ ZSH_THEME="pygmalion"
 ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -58,7 +58,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting vi-mode battery)
+plugins=(zsh-syntax-highlighting vi-mode battery)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -75,6 +75,11 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+
+# Custom Bash completions
+autoload bashcompinit
+bashcompinit
+source ~/.bash_completion.d/diesel_completions
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
@@ -107,14 +112,15 @@ export PATH=$PATH:$GOPATH/bin
 # chruby
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
+RUBIES+=(~/.rubies/*)
 
 # Haskellus
 export PATH=$HOME/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH
 export PATH=~/.cabal/bin:/opt/cabal/1.22/bin:/opt/ghc/7.10.3/bin:$PATH
 
 # GTK+ 3 HiDPI
-export GDK_SCALE=2
-export GDK_DPI_SCALE=0.5
+#export GDK_SCALE=2
+#export GDK_DPI_SCALE=0.5
 
 # Swift
 #export PATH=~/Code/swift/toolchain/usr/bin:"${PATH}"
@@ -124,21 +130,22 @@ export DEBFULLNAME="Jose Narvaez"
 export DEBEMAIL="goyox86@@gmail.com"
 
 # Terminix VTE
-if [ $TERMINIX_ID ] || [ $VTE_VERSION ]; then
-  source /etc/profile.d/vte.sh
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
 fi
+
+#function custom_prompt() {
+#  __git_ps1 "\[\033[0;31m\]\u \[\033[0;36m\]\h:\w\[\033[00m\]" " \n\[\033[0;31m\]>\[\033[00m\] " " %s"
+#  VTE_PWD_THING="$(__vte_osc7)"
+#  PS1="$PS1$VTE_PWD_THING"
+#}
+#PROMPT_COMMAND=`custom_prompt`
 
 # Guaka
 export PATH=$PATH:/home/goyox86/.Guaka-Generator/bin
 
 # man syntax highlighting
 export PAGER=most
-
-# rls
-export DYLD_LIBRARY_PATH=${HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib
-export RLS_ROOT=${HOME}/Code/rust/rls
-# rust racer
-export RUST_SRC_PATH=${HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/line/rustlib/src/rust/src
 
 export PATH=~/bin:$PATH
 
@@ -148,5 +155,15 @@ export PATH=~/.riscv/bin:$PATH
 # Qt HiDPI
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export QT_SCREEN_SCALE_FACTORS=1.5
+export QT_QPA_PLATFORMTHEME=gtk2
+
+source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Java/Scala
+export JAVA_HOME="/usr/lib/jvm/java-8-oracle/jre/bin/java"
+export JDK_HOME="/usr/lib/jvm/java-8-oracle"
+
+# Flatpak theme
+#export GTK_THEME="Pop Dark"
 
 neofetch
