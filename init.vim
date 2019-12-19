@@ -43,7 +43,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'majutsushi/tagbar'
-Plug 'powerman/vim-plugin-viewdoc'
+"Plug 'powerman/vim-plugin-viewdoc'
 Plug 'elixir-lang/vim-elixir'
 Plug 'thinca/vim-ref'
 Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }

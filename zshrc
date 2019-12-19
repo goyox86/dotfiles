@@ -58,7 +58,8 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-syntax-highlighting vi-mode battery)
+#plugins=(zsh-syntax-highlighting vi-mode battery)
+plugins=(vi-mode battery)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -68,6 +69,8 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+
+export EDITOR='nvim'
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -101,7 +104,6 @@ source ~/.aliases
 export NVM_DIR="/home/goyox86/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
-
 # rustup.rs
 source $HOME/.cargo/env
 
@@ -141,29 +143,47 @@ fi
 #}
 #PROMPT_COMMAND=`custom_prompt`
 
-# Guaka
-export PATH=$PATH:/home/goyox86/.Guaka-Generator/bin
-
 # man syntax highlighting
-export PAGER=most
+#export PAGER=most
 
 export PATH=~/bin:$PATH
 
 # RISC-V toolchain
-export PATH=~/.riscv/bin:$PATH
+#export PATH=~/.riscv/bin:$PATH
+
+# x86_64 ELF binutils
+#export PATH="$HOME/opt/cross/bin:$PATH"
 
 # Qt HiDPI
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
-export QT_SCREEN_SCALE_FACTORS=1.5
-export QT_QPA_PLATFORMTHEME=gtk2
+#export QT_AUTO_SCREEN_SCALE_FACTOR=0
+#export QT_SCREEN_SCALE_FACTORS=1.5
+#export QT_QPA_PLATFORMTHEME=gtk2
 
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Java/Scala
-export JAVA_HOME="/usr/lib/jvm/java-8-oracle/jre/bin/java"
-export JDK_HOME="/usr/lib/jvm/java-8-oracle"
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/"
+export JDK_HOME="/usr/lib/jvm/java-11-openjdk-amd64/"
 
 # Flatpak theme
 #export GTK_THEME="Pop Dark"
+
+# OCaml Opam
+. /home/goyox86/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# Fucshia
+PATH="/home/goyox86/Code/fuchsia/.jiri_root/bin:$PATH"
+
+# aarch64 toolchain
+PATH="/usr/local/bin/aarch64-none-elf/bin:$PATH"
+
+# Qt5 GTK+ Styles
+export QT_QPA_PLATFORMTHEME=gtk2
+
+# Wasmer
+export WASMER_DIR="/home/goyox86/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+eval "$(starship init zsh)"
 
 neofetch

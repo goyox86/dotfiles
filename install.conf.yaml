@@ -17,6 +17,9 @@
     ~/.aliases: aliases
     ~/.zsh: .zsh
     ~/.zshrc: zshrc
+    ~/.config/i3/config: i3_config
+    ~/.config/polybar: polybar_config
+
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
