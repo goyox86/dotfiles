@@ -21,8 +21,6 @@ Plug 'rust-lang/rust.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
-Plug 'joshdick/airline-onedark.vim'
-Plug 'racer-rust/vim-racer'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
@@ -43,7 +41,10 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'majutsushi/tagbar'
+<<<<<<< Updated upstream
 "Plug 'powerman/vim-plugin-viewdoc'
+=======
+>>>>>>> Stashed changes
 Plug 'elixir-lang/vim-elixir'
 Plug 'thinca/vim-ref'
 Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
@@ -72,6 +73,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'chriskempson/base16-vim'
 
 "Add plugins to &runtimepath
 call plug#end()
@@ -81,19 +83,13 @@ filetype plugin on
 
 " Syntax
 syntax on
-colorscheme birds-of-paradise
-let g:onedark_termcolors=24
+colorscheme base16-tomorrow-night-eighties
 
 " Configuring airline
 let g:airline_theme='tomorrow'
 
 " Side Pane
 let g:netrw_liststyle=3
-
-" Racer Rust
-"set hidden
-let g:racer_cmd = "/home/goyox86/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
 
 " TagBar Rust
 let g:tagbar_type_rust = {

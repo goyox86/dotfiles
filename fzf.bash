@@ -1,7 +1,7 @@
 # Setup fzf
 # ---------
 if [[ ! "$PATH" == */home/goyox86/.fzf/bin* ]]; then
-  export PATH="$PATH:/home/goyox86/.fzf/bin"
+  export PATH="${PATH:+${PATH}:}/home/goyox86/.fzf/bin"
 fi
 
 # Auto-completion
@@ -11,4 +11,3 @@ fi
 # Key bindings
 # ------------
 source "/home/goyox86/.fzf/shell/key-bindings.bash"
-
