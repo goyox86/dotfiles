@@ -9,7 +9,7 @@ bindsym $mod+u border none
 bindsym $mod+y border pixel 1
 bindsym $mod+n border normal
 
-font xft:URWGothic-Book 11
+font xft:FiraSans 10
 
 floating_modifier $mod
 
@@ -19,7 +19,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id rofi -show run -theme base16-tomorrow-night-eighties
 # bindsym $mod+d exec --no-startup-id rofi -combi-modi window
 
 
@@ -154,6 +154,7 @@ for_window [class="Thus"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+for_window [class=".*"] border pixel 0
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -216,20 +217,14 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec_always --no-startup-id $HOME/.config/polybar/i3wmthemer_bar_launch.sh
-
-# Theme colors
-client.focused #bfbfbf #162025 #bfbfbf #39402e #39402e
-client.focused_inactive #bfbfbf #162025 #bfbfbf #75404b #75404b
-client.unfocused #bfbfbf #162025 #bfbfbf #75404b #75404b
-client.urgent #bfbfbf #162025 #bfbfbf #75404b #75404b
-client.placeholder #bfbfbf #162025 #bfbfbf #75404b #75404b
-
-client.background #162025
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# pick up gnome theme
+exec_always --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 
 # Gaps
 gaps inner 10
-gaps outer -4
+gaps top 20
+gaps bottom 20
 
 smart_gaps on
 
@@ -270,16 +265,55 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-# set power-manager and volume control
-exec --no-startup-id mate-power-manager
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2db- unmute
-bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
+# Multimedia controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% # raise volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% # lower volume
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # toggle mute for default device
 
 # touchpad on and off controller on laptop with Fn+<touchpad control functional key>
 bindsym XF86TouchpadOn exec --no-startup-id synclient Touchpadoff=0
 bindsym XF86TouchpadOff exec --no-startup-id synclient Touchpadoff=1
 
-# pick up gnome theme
-exec_always --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+# loading new colors
+#bindsym $mod+Shift+c exec "cat .config/i3/colors .config/i3/base > .config/i3/config && i3-msg reload"
+
+## Base16 Default Dark
+# Author: Chris Kempson (http://chriskempson.com)
+#
+# You can use these variables anywhere in the i3 configuration file.
+
+set $base00 #181818
+set $base01 #282828
+set $base02 #383838
+set $base03 #585858
+set $base04 #b8b8b8
+set $base05 #d8d8d8
+set $base06 #e8e8e8
+set $base07 #f8f8f8
+set $base08 #ab4642
+set $base09 #dc9656
+set $base0A #f7ca88
+set $base0B #a1b56c
+set $base0C #86c1b9
+set $base0D #7cafc2
+set $base0E #ba8baf
+set $base0F #a16946
+
+# Basic color configuration using the Base16 variables for windows and borders.
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base05 $base0D $base00 $base0D $base0C
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
+
+# Natural scrolling
+exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113

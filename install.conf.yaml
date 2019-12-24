@@ -18,7 +18,7 @@
     ~/.zsh: .zsh
     ~/.zshrc: zshrc
     ~/.config/i3/config: i3_config
-    ~/.config/polybar: polybar_config
+    ~/.config/polybar/config: polybar_config
 
 
 - shell:
