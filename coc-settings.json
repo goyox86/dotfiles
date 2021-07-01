@@ -1,0 +1,11 @@
+{
+  "codeLens.enable": true,
+  "rust-analyzer.server.path": "/home/goyox86/Code/rust/rust-analyzer/target/release/rust-analyzer",
+  "rust-analyzer.procMacro.enable": true,
+  "rust-analyzer.cargo.allFeatures": true,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true
+}
