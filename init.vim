@@ -18,8 +18,6 @@ Plug 'onsails/lspkind-nvim'
 
 " Base16 Colors
 Plug 'chriskempson/base16-vim'
-" Lush colors DSL
-"Plug 'rktjmp/lush.nvim'
 
 " Buffer Tabs
 Plug 'akinsho/nvim-bufferline.lua'
@@ -30,8 +28,9 @@ Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
 " File Search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Status line
 " Plug 'itchyny/lightline.vim'
@@ -93,8 +92,6 @@ buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()
 buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
 buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
 buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-buf_set_keymap('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
@@ -195,7 +192,49 @@ EOF
 " *** End of nvim-treesitter
 
 " nvim-lightbulb
-autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+lua <<EOF
+require'nvim-lightbulb'.update_lightbulb {
+    sign = {
+        enabled = true,
+        -- Priority of the gutter sign
+        priority = 10,
+    },
+    float = {
+        enabled = false,
+        -- Text to show in the popup float
+        text = "💡",
+        -- Available keys for window options:
+        -- - height     of floating window
+        -- - width      of floating window
+        -- - wrap_at    character to wrap at for computing height
+        -- - max_width  maximal width of floating window
+        -- - max_height maximal height of floating window
+        -- - pad_left   number of columns to pad contents at left
+        -- - pad_right  number of columns to pad contents at right
+        -- - pad_top    number of lines to pad contents at top
+        -- - pad_bottom number of lines to pad contents at bottom
+        -- - offset_x   x-axis offset of the floating window
+        -- - offset_y   y-axis offset of the floating window
+        -- - anchor     corner of float to place at the cursor (NW, NE, SW, SE)
+        -- - winblend   transparency of the window (0-100)
+        win_opts = {},
+    },
+    virtual_text = {
+        enabled = false,
+        -- Text to show at virtual text
+        text = "💡",
+    },
+    status_text = {
+        enabled = false,
+        -- Text to provide when code actions are available
+        text = "💡",
+        -- Text to provide when no actions are available
+        text_unavailable = ""
+    }
+}
+
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb({ sign = {enabled = false}, float = { enabled = true }, status_text = { enabled = true}})]]
+EOF
 " *** End of nvim-lightbulb
 
 " nvim-lspkind
@@ -335,13 +374,21 @@ highlight NvimTreeFolderIcon guibg=blue
 " *** End of Nvim-tree
 
 " File Search
-nnoremap <C-p> :GFiles<CR>
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit'
-  \}
-" End of File Search
+nnoremap <C-p> <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <C-f> <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>ga <cmd>lua require('telescope.builtin').lsp_code_actions()<cr>
+nnoremap <leader>gr <cmd>lua require('telescope.builtin').lsp_references()<cr>
+nnoremap <leader>ga <cmd>lua require('telescope.builtin').lsp_code_actions()<cr>
+nnoremap <leader>gd <cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>
+nnoremap <leader>gwd <cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>
+nnoremap <leader>gs <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
+" builtin.lsp_workspace_symbols
+" builtin.lsp_dynamic_workspace_symbols
+" builtin.lsp_implementations
+" builtin.lsp_definitions
+" *** End of File Search
 
 " Buffers Tabs
 lua <<EOF
@@ -641,6 +688,7 @@ nmap ++ <plug>NERDCommenterToggle
 
 " General Neovin config
 " Neovim config
+" let mapleader=","
 syntax enable " enable syntax highglighting
 syntax on " turn on syntax highlighting
 set undodir=~/.config/nvim/undodir " set undotree file directory
