@@ -63,6 +63,12 @@ Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
+" Scrollbar
+"Plug 'dstein64/nvim-scrollview', { 'branch': 'main' }
+
+" Minimap
+Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+
 " Initialize plugin system
 call plug#end()
 
@@ -84,8 +90,8 @@ local opts = { noremap=true, silent=true }
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
 buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
@@ -305,6 +311,7 @@ let g:nvim_tree_lsp_diagnostics = 1 "0 by default, will show lsp diagnostics in 
 let g:nvim_tree_hijack_cursor = 0 "1 by default, when moving cursor in the tree, will position the cursor at the start of the file on the current line
 let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
 let g:nvim_tree_update_cwd = 1 "0 by default, will update the tree cwd when changing nvim's directory (DirChanged event). Behaves strangely with autochdir set.
+let g:nvim_tree_disable_window_picker = 1
 let g:nvim_tree_window_picker_exclude = {
     \   'filetype': [
     \     'packer',
@@ -381,7 +388,7 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>ga <cmd>lua require('telescope.builtin').lsp_code_actions()<cr>
 nnoremap <leader>gr <cmd>lua require('telescope.builtin').lsp_references()<cr>
 nnoremap <leader>ga <cmd>lua require('telescope.builtin').lsp_code_actions()<cr>
-nnoremap <leader>gd <cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>
+nnoremap <leader>di <cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>
 nnoremap <leader>gwd <cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>
 nnoremap <leader>gs <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>
 " builtin.lsp_workspace_symbols
@@ -669,6 +676,14 @@ lua <<EOF
 require("toggleterm").setup{}
 EOF
 " *** End of Neovim toggleterm
+
+" Minimap
+let g:minimap_width = 20
+let g:minimap_auto_start = 1
+let g:minimap_auto_start_win_enter = 1
+let g:minimap_highlight_range = 1
+let g:minimap_git_colors = 1
+" *** End of Minimap
 
 " Nerd Commenter
 " " Use compact syntax for prettified multi-line comments
