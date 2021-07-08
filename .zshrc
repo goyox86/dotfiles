@@ -1,5 +1,5 @@
 
-source "/usr/local/share/zsh-antigen/antigen.zsh"
+source "/usr/local/share/antigen/antigen.zsh"
 
 # Load Antigen configurations
 antigen init ~/.antigenrc
@@ -9,9 +9,6 @@ eval "$(starship init zsh)"
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Aliases
-alias code="code-oss"
 
 # Bat based man pager
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=base16-tomorrow-night'"
@@ -37,3 +34,6 @@ export PATH="$PATH:/home/goyox86/.local/bin:/usr/home/goyox86/.local/bin"
 
 # System info
 neofetch
+
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+export PATH="/usr/local/opt/llvm/bin:$PATH"
